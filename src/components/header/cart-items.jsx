@@ -1,36 +1,67 @@
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
+import { CgDollar } from 'react-icons/cg';
 
-const CartItems = ({ isMenuOpen, handleClose }) => {
+const CartItems = ({ products }) => {
   return (
-    <div
-      className={`${
-        !isMenuOpen && 'pointer-events-none'
-      } z-100 absolute inset-0 h-full w-full overflow-hidden`}
-    >
-      <div
-        onClick={handleClose}
-        className={`${
-          isMenuOpen ? 'opacity-100' : 'opacity-0'
-        } absolute inset-0 bg-neutral-800/70  duration-300`}
-      />
-      <div
-        className={`absolute right-0 h-full w-[35rem] bg-white duration-300
-      ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-      >
-        <ul className='p-8'>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-          <li>item 4</li>
-          <li>item 5</li>
-        </ul>
-        <AiOutlineClose
-          onClick={handleClose}
-          className='absolute top-8 right-8 cursor-pointer'
-          size={20}
-        />
-      </div>
-    </div>
+    <ul className='mx-8 flex flex-col gap-4 py-8'>
+      {products.map((product) => {
+        return (
+          <li
+            key={product.id}
+            className='flex items-center gap-4'>
+            <div className='group/close relative w-1/4 overflow-hidden rounded-xl'>
+              <img
+                src={product.cover}
+                alt={product.name}
+                className=' h-full w-full object-cover'
+              />
+
+              <div
+                className='absolute inset-0 flex items-center justify-center bg-neutral-600/50 
+                opacity-0 duration-300 group-hover/close:opacity-100'>
+                <div
+                  className='group/close-btn flex h-8 w-8 cursor-pointer items-center justify-center 
+                  rounded-full bg-white'>
+                  <AiOutlineClose className='rotate-0 duration-300 group-hover/close-btn:rotate-180' />
+                </div>
+              </div>
+            </div>
+
+            <div className='flex h-full flex-col justify-between py-2'>
+              <h3 className='text-lg font-medium'>{product.name}</h3>
+              <div>
+                <div>
+                  {/* price */}
+                  <div className='mb-1.5 flex items-center gap-2 font-light'>
+                    Unit price
+                    <span className='flex items-center font-bold'>
+                      <CgDollar />
+                      {product.price}
+                    </span>
+                  </div>
+                  {/* buttons group */}
+                  <div
+                    className='shrink-1 inline-flex items-stretch overflow-hidden rounded-md 
+                    border-none bg-teal-800 text-white'>
+                    <AiOutlinePlus
+                      className='flex h-full w-8 cursor-pointer items-center justify-center p-2 
+                      duration-150 hover:bg-teal-900'
+                    />
+                    <span className='flex h-8 w-7 select-none items-center justify-center text-lg'>
+                      1
+                    </span>
+                    <AiOutlineMinus
+                      className='flex h-full w-8 cursor-pointer items-center justify-center p-2 
+                      duration-150 hover:bg-teal-900'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

@@ -1,0 +1,52 @@
+/* ==========================================================================
+CATAMARAN FONT
+========================================================================== */
+
+/* catamaran-300 - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''), url('../fonts/CatamaranLight.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranLight.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* catamaran-500 - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''), url('../fonts/CatamaranMedium.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranMedium.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* catamaran-regular - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('../fonts/CatamaranRegular.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranRegular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* catamaran-600 - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''), url('../fonts/CatamaranSemibold.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranSemibold.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* catamaran-700 - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url('../fonts/CatamaranBold.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranBold.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* catamaran-900 - latin */
+@font-face {
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 900;
+  src: local(''), url('../fonts/CatamaranBlack.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('../fonts/CatamaranBlack.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}

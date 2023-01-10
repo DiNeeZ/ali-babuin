@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+
+import Portal from '../portal/portal';
+
 import { IoSettingsOutline } from 'react-icons/io5';
 import { FiUser } from 'react-icons/fi';
 import { BsBagCheck } from 'react-icons/bs';
@@ -28,10 +31,13 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
 
   return (
     <>
+      <Portal wrapperId='root-overlay'>
+        <div className='overlay absolute  inset-0 z-10' />
+      </Portal>
       <div
-        className='user-dropdown absolute top-14 right-0 z-20 min-w-[296px] -translate-x-[calc(100%_-_1rem)] 
-        rounded border border-slate-400/20 bg-white p-6 shadow-md shadow-slate-700/50'>
-        <div className='mb-4 flex flex-col items-start'>
+        className='user-dropdown absolute top-14 right-0  min-w-[296px]
+        rounded border border-slate-400/20 bg-white px-2 py-6 shadow-md shadow-slate-700/50'>
+        <div className='mb-4 flex flex-col items-start px-4'>
           <img
             src='https://cdn-icons-png.flaticon.com/512/2202/2202112.png'
             alt='user'
@@ -44,7 +50,8 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           <li>
             <Link
               to='/'
-              className='flex items-center gap-2 py-2 hover:bg-neutral-400/50'>
+              className='flex items-center gap-2 rounded px-4 py-2 outline-none duration-150 
+              hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
               <IoSettingsOutline
                 size={20}
                 className='text-neutral-900'
@@ -55,7 +62,8 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           <li>
             <Link
               to='/'
-              className='flex items-center gap-2 py-2 hover:bg-neutral-400/50'>
+              className='flex items-center gap-2 rounded px-4 py-2 outline-none duration-150 
+              hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
               <BsBagCheck
                 size={20}
                 className='text-neutral-900'
@@ -66,7 +74,8 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           <li>
             <Link
               to='/'
-              className='flex items-center gap-2 py-2 hover:bg-neutral-400/50'>
+              className='flex items-center gap-2 rounded px-4 py-2 outline-none duration-150 
+              hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
               <AiOutlineHeart
                 size={20}
                 className='text-neutral-900'
@@ -77,7 +86,8 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           <li>
             <Link
               to='/'
-              className='flex items-center gap-2 py-2 hover:bg-neutral-400/50'>
+              className='flex items-center gap-2 rounded px-4 py-2 outline-none duration-150 
+              hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
               <IoSettingsOutline
                 size={20}
                 className='text-neutral-900'
@@ -87,7 +97,6 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           </li>
         </ul>
       </div>
-      <div className='overlay absolute  inset-0 z-10' />
     </>
   );
 };
@@ -95,8 +104,18 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
 const Profile = () => {
   const [profileOpen, setProfileOpen] = useState(false);
 
+  const handleSpacebarDown = (e) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      setProfileOpen(true);
+    }
+  };
+
   return (
-    <div>
+    <div
+      tabIndex={0}
+      className='relative z-20 outline-none'
+      onKeyDown={handleSpacebarDown}>
       <div
         className='flex h-8 w-8 cursor-pointer items-center'
         onClick={() => setProfileOpen(!profileOpen)}>

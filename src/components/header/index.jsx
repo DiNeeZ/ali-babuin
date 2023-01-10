@@ -6,7 +6,7 @@ import { ReactComponent as LogoImg } from '../../assets/images/logo.svg';
 
 const Header = () => {
   return (
-    <header className='py-2 shadow-md'>
+    <header className='z-10 py-2 shadow-md'>
       <div className='container flex items-center justify-between'>
         <Link
           to='/'

@@ -3,7 +3,6 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      small: '320px',
       mobile: '640px',
       tablet: '960px',
       desktop: '1280px'
@@ -20,6 +19,12 @@ module.exports = {
     extend: {
       fontFamily: {
         catamaran: ['Catamaran', 'sans-serif']
+      },
+      transitionTimingFunction: {
+        expo: 'cubic-bezier(0.25, 0.45, 0.45, 0.95)'
+      },
+      transitionDuration: {
+        '6s': '6000ms'
       }
     }
   },

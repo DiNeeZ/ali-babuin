@@ -1,5 +1,6 @@
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import { CgDollar } from 'react-icons/cg';
+import CounterBtns from '../counter-btns';
 
 const CartItems = ({ products }) => {
   return (
@@ -31,7 +32,6 @@ const CartItems = ({ products }) => {
               <h3 className='text-lg font-medium'>{product.name}</h3>
               <div>
                 <div>
-                  {/* price */}
                   <div className='mb-1.5 flex items-center gap-2 font-light'>
                     Unit price
                     <span className='flex items-center font-bold'>
@@ -39,22 +39,7 @@ const CartItems = ({ products }) => {
                       {product.price}
                     </span>
                   </div>
-                  {/* buttons group */}
-                  <div
-                    className='shrink-1 inline-flex items-stretch overflow-hidden rounded-md 
-                    border-none bg-teal-800 text-white'>
-                    <AiOutlinePlus
-                      className='flex h-full w-8 cursor-pointer items-center justify-center p-2 
-                      duration-150 hover:bg-teal-900'
-                    />
-                    <span className='flex h-8 w-7 select-none items-center justify-center text-lg'>
-                      1
-                    </span>
-                    <AiOutlineMinus
-                      className='flex h-full w-8 cursor-pointer items-center justify-center p-2 
-                      duration-150 hover:bg-teal-900'
-                    />
-                  </div>
+                  <CounterBtns />
                 </div>
               </div>
             </div>

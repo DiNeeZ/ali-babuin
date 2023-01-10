@@ -8,14 +8,12 @@ const NavBar = () => {
       <ul className='flex items-center gap-4'>
         <li
           className='rounded-md border border-transparent p-1.5 text-neutral-700 
-          outline-none focus:border-neutral-400/80'
-          tabIndex={0}>
+          outline-none focus-within:border-neutral-400/80'>
           <Cart />
         </li>
         <li
           className='rounded-md border border-transparent text-neutral-700 
-          outline-none focus:border-neutral-400/80'
-          tabIndex={0}>
+          outline-none focus-within:border-neutral-400/80'>
           <User />
         </li>
       </ul>

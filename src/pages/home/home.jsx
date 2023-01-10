@@ -1,10 +1,12 @@
 import React from 'react';
+import Categories from '../../components/categories';
+import { products2 } from '../../assets/data';
 
 const Home = () => {
   return (
-    <section>
-      <div className='container'>Home Page</div>
-    </section>
+    <>
+      <Categories />
+    </>
   );
 };
 

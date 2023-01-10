@@ -7,10 +7,9 @@ const Layout = () => {
   return (
     <div
       className='flex min-h-screen flex-col border-b-2 border-transparent 
-                 font-catamaran text-neutral-700'
-    >
+       font-catamaran text-neutral-700'>
       <Header />
-      <main className='grow shadow-md'>
+      <main className='grow bg-neutral-50 py-8 shadow-md'>
         <Outlet />
       </main>
       <Footer />

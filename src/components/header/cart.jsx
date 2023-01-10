@@ -21,8 +21,18 @@ const Cart = () => {
     return () => document.body.removeEventListener('keydown', closeOnEscapeKey);
   }, []);
 
+  const handleSpacebarDown = (e) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
+
   return (
-    <div>
+    <div
+      tabIndex={0}
+      className='outline-none'
+      onKeyDown={handleSpacebarDown}>
       <div
         onClick={() => setOpen(!open)}
         className='relative cursor-pointer'>
@@ -39,13 +49,7 @@ const Cart = () => {
           !open && 'pointer-events-none'
         } z-100 absolute inset-0 h-full w-full overflow-hidden`}>
         <div
-          onClick={() => setOpen(false)}
-          className={`${
-            open ? 'opacity-100' : 'opacity-0'
-          } absolute inset-0 bg-neutral-800/70  duration-300`}
-        />
-        <div
-          className={`absolute right-0 h-full w-[35rem] bg-white 
+          className={`absolute right-0 z-30 h-full w-[35rem] bg-white 
           duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
           <h2 className='mx-8 border-b py-4 text-xl font-semibold'>Cart Items</h2>
           <div className='h-[calc(100%_-_4rem)] overflow-y-auto'>
@@ -73,6 +77,12 @@ const Cart = () => {
             size={25}
           />
         </div>
+        <div
+          onClick={() => setOpen(false)}
+          className={`${
+            open ? 'opacity-100' : 'opacity-0'
+          } absolute inset-0 z-20 bg-neutral-800/95 duration-300`}
+        />
       </div>
     </div>
   );

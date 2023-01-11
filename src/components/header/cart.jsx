@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CgDollar } from 'react-icons/cg';
-
 import { BiShoppingBag } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+
 import CartItems from './cart-items';
 import { products } from '../../assets/data';
 

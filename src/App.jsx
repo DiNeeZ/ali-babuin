@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout';
 import Home from './pages/home/home';
-import Category from './pages/category/category';
+import ProductsGrid from './pages/products-grid/products-grid';
 
 const App = () => {
   return (
@@ -15,8 +15,8 @@ const App = () => {
           element={<Home />}
         />
         <Route
-          path='/category/:category'
-          element={<Category />}
+          path='/products/:parameters'
+          element={<ProductsGrid />}
         />
       </Route>
     </Routes>

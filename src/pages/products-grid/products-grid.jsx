@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import Card from '../../components/card';
 import { products2 } from '../../assets/data';
 
-const Category = () => {
-  const { category } = useParams();
+const ProductsGrid = () => {
+  const { parameters } = useParams();
 
-  const categoryItems = products2.filter((item) => item.category === category);
-  console.log(categoryItems);
+  const categoryItems = parameters
+    .split('&')
+    .map((param) => products2.filter((item) => item.category === param))
+    .flat();
 
   return (
     <section>
@@ -25,4 +27,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default ProductsGrid;

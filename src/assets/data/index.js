@@ -6,6 +6,35 @@ export const slide = [
   { image: '../images/slide/slide3.png' },
   { image: '../images/slide/slide4.png' }
 ];
+
+export const sliderData = [
+  {
+    id: '1-best-deals-on-electronics',
+    title: 'best deals on electronics',
+    imgUrl: '../images/slide/electronics.jpg',
+    urlParam: 'laptops&smartphones'
+  },
+  {
+    id: '2-for-women',
+    title: 'for women',
+    imgUrl: '../images/slide/women.jpg',
+    urlParam:
+      'fragrances&skincare&tops&womens-shoes&womens-watches&womens-dresses&womens-bags&womens-jewellery'
+  },
+  {
+    id: '3-for-men',
+    title: 'for men',
+    imgUrl: '../images/slide/men.jpg',
+    urlParam: 'mens-shoes&mens-shirts&mens-watches&automotive&motorcycle'
+  },
+  {
+    id: '4-housing',
+    title: 'for home',
+    imgUrl: '../images/slide/housing.jpg',
+    urlParam: 'groceries&home-decoration&furniture&lighting'
+  }
+];
+
 export const order = [
   {
     id: 1,

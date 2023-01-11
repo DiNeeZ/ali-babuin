@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.8306416729206 129.54980029492106" width="207.8306416729206" height="129.54980029492106">
+  <!-- svg-source:excalidraw -->
+  
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="207.8306416729206" height="129.54980029492106" fill="transparent"></rect><g transform="translate(55.83064167292059 10) rotate(0 71 22.5)"><text x="0" y="32" font-family="Virgil, Segoe UI Emoji" font-size="36px" fill="#dc2626" text-anchor="start" style="white-space: pre;" direction="ltr">Click Me</text></g><g stroke-linecap="round"><g transform="translate(63.201817770169555 55.011715934526414) rotate(327.00893283155705 -33.01255518639658 22.505992213207787)"><path d="M0.23 0.69 C-6.09 0.25, -27.82 -11.27, -38.86 -3.12 C-49.91 5.03, -61.36 40.65, -66.03 49.58 M-1.11 0.01 C-7.42 -0.19, -28.45 -10.12, -39.31 -1.62 C-50.17 6.89, -61.72 42.68, -66.26 51.04" stroke="#dc2626" stroke-width="1" fill="none"></path></g><g transform="translate(63.201817770169555 55.011715934526414) rotate(327.00893283155705 -33.01255518639658 22.505992213207787)"><path d="M-63.45 23.16 C-65.2 29.85, -65.01 35.02, -64.36 51.01 M-65.26 22.22 C-65.83 29.96, -64.54 39.41, -67.18 50.31" stroke="#dc2626" stroke-width="1" fill="none"></path></g><g transform="translate(63.201817770169555 55.011715934526414) rotate(327.00893283155705 -33.01255518639658 22.505992213207787)"><path d="M-44.89 31.11 C-50.75 36.07, -54.7 39.47, -64.36 51.01 M-46.71 30.18 C-53.12 35.36, -57.61 42.34, -67.18 50.31" stroke="#dc2626" stroke-width="1" fill="none"></path></g></g><mask></mask></svg>

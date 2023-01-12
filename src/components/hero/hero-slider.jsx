@@ -15,8 +15,9 @@ const HeroSlider = ({ children }) => {
         <Swiper
           modules={[Navigation, Autoplay, A11y]}
           autoplay={{
-            delay: 2000
+            delay: 10000
           }}
+          speed={1500}
           loop={true}
           slidesPerView={1}
           navigation={{

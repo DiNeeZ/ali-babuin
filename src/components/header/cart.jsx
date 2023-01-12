@@ -21,6 +21,12 @@ const Cart = () => {
     return () => document.body.removeEventListener('keydown', closeOnEscapeKey);
   }, []);
 
+  useEffect(() => {
+    open && (document.body.style.overflow = 'hidden');
+    open && window.scrollTo(0, 0);
+    !open && (document.body.style.overflow = 'unset');
+  }, [open]);
+
   const handleSpacebarDown = (e) => {
     if (e.key === ' ') {
       e.preventDefault();
@@ -49,18 +55,18 @@ const Cart = () => {
           !open && 'pointer-events-none'
         } z-100 absolute inset-0 h-full w-full overflow-hidden`}>
         <div
-          className={`absolute right-0 z-30 h-full w-[35rem] bg-white 
-          duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+          className={`absolute right-0 z-30 h-full w-full bg-white duration-300 
+          mobile:w-[35rem] ${open ? 'translate-x-0' : 'translate-x-full'}`}>
           <h2 className='mx-8 border-b py-4 text-xl font-semibold'>Cart Items</h2>
           <div className='h-[calc(100%_-_4rem)] overflow-y-auto'>
             <CartItems products={products} />
 
-            <div className='mx-24 my-8'>
+            <div className='m-8 mobile:mx-24'>
               <Link
                 tabIndex={open ? 0 : -1}
                 to='/checkout'
                 className='flex cursor-pointer items-center justify-between rounded-lg 
-              bg-neutral-800 px-12 py-2 text-white duration-150 hover:bg-neutral-800/95'>
+              bg-neutral-800 px-4 py-2 text-white duration-150 hover:bg-neutral-800/95 mobile:px-12'>
                 <span>Go to Checkout!</span>
                 <span
                   className='relative flex items-center pl-4

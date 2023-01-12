@@ -2280,3 +2280,50 @@ export const products = [
     desc: 'The term cleanser refers to a product that cleans or removes dirt or other substances. A cleanser could be a detergent, and there are many types of cleansers that are produced with a specific objective or focus.'
   }
 ];
+
+export const brands = {
+  first: [
+    {
+      id: 'brand-hp',
+      imgUrl: '../images/brands/hp.png'
+    },
+    {
+      id: 'brand-yosi-lamps',
+      imgUrl: '../images/brands/yosi-lamps.png'
+    },
+    {
+      id: 'brand-apple',
+      imgUrl: '../images/brands/apple.png'
+    },
+    {
+      id: 'brand-royal-mirage',
+      imgUrl: '../images/brands/royal-mirage.png'
+    },
+    {
+      id: 'brand-oppo',
+      imgUrl: '../images/brands/oppo.png'
+    }
+  ],
+  second: [
+    {
+      id: 'brand-louis-will',
+      imgUrl: '../images/brands/louis-will.png'
+    },
+    {
+      id: 'brand-microsoft',
+      imgUrl: '../images/brands/microsoft.png'
+    },
+    {
+      id: 'brand-huawei',
+      imgUrl: '../images/brands/huawei.png'
+    },
+    {
+      id: 'brand-samsung',
+      imgUrl: '../images/brands/samsung.png'
+    },
+    {
+      id: 'brand-dadawu',
+      imgUrl: '../images/brands/dadawu.png'
+    }
+  ]
+};

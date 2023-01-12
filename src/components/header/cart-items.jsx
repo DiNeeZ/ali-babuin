@@ -4,7 +4,7 @@ import CounterBtns from '../counter-btns';
 
 const CartItems = ({ products }) => {
   return (
-    <ul className='mx-8 flex flex-col gap-4 py-8'>
+    <ul className='mx-2 flex flex-col gap-4 py-8 mobile:mx-6 tablet:mx-8'>
       {products.map((product) => {
         return (
           <li

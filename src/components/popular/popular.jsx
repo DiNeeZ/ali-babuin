@@ -4,6 +4,7 @@ import PopularItem from './popular-item';
 import { products2 } from '../../assets/data';
 import { getMultipleRandom } from '../../utils';
 
+import './styles.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,7 +15,7 @@ const Popular = () => {
   const popular = getMultipleRandom(products2, 8);
   return (
     <section className='mb-16 bg-neutral-200 pt-8 pb-16'>
-      <div className='container'>
+      <div className='popular container'>
         <h2 className='mb-4 text-center text-2xl font-bold'>Most Popular on Last Week</h2>
 
         <Swiper
@@ -23,6 +24,7 @@ const Popular = () => {
             clickable: true
           }}
           loop={true}
+          grabCursor={true}
           slidesPerView={1}
           breakpoints={{
             640: {
@@ -31,11 +33,11 @@ const Popular = () => {
             },
             960: {
               slidesPerView: 3,
-              spaceBetween: 20
+              spaceBetween: 10
             },
             1280: {
               slidesPerView: 4,
-              spaceBetween: 30
+              spaceBetween: 10
             }
           }}>
           {popular.map((item) => (

@@ -8,7 +8,8 @@ const Filler = () => {
         <div className='flex flex-col-reverse justify-around gap-4 small:flex-row'>
           <div className='flex items-center justify-center'>
             <p className='text-lg font-normal mobile:text-xl mobile:font-bold'>
-              Ape food <br />
+              Ape food
+              <br />
               Bamboo shoots and fresh fruits
               <br />
               Termite larvae

@@ -3,8 +3,9 @@ import Benefits from '../../components/benefits';
 import Quotes from '../../components/quotes';
 import Popular from '../../components/popular/popular';
 import Brands from '../../components/brands';
-import Categories from '../../components/categories';
+import PopularCategories from '../../components/popular-categories';
 import Filler from '../../components/filler';
+import YouMayLike from '../../components/you-may-like';
 
 const Home = () => {
   return (
@@ -15,7 +16,8 @@ const Home = () => {
       <Popular />
       <Brands />
       <Filler />
-      <Categories />
+      <PopularCategories />
+      <YouMayLike />
     </>
   );
 };

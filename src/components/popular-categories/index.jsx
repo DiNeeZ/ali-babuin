@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from '../../assets/data';
+import { getMultipleRandom } from '../../utils';
 
-const Categories = () => {
+const PopularCategories = () => {
+  const popularCategories = getMultipleRandom(categories, 8);
+
   return (
     <section>
-      <div className='container'>
+      <div className='container mb-8'>
+        <h2 className='mb-8 text-center text-2xl font-bold'>Popular Categories</h2>
         <ul
           className='grid grid-cols-1 gap-4 
           mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4'>
-          {categories.map((category) => (
+          {popularCategories.map((category) => (
             <li
               key={category.id}
               className='group/category relative z-0 cursor-pointer overflow-hidden rounded-lg shadow-xl'>
@@ -38,4 +42,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default PopularCategories;

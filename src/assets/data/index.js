@@ -1,3 +1,23 @@
+import {
+  GiSmartphone,
+  GiFragrance,
+  GiDrippingTube,
+  GiWatch,
+  GiTankTop,
+  GiLargeDress,
+  GiSonicShoes,
+  GiBallerinaShoes
+} from 'react-icons/gi';
+import { BsLaptop, BsHandbagFill, BsLightbulb, BsSunglasses } from 'react-icons/bs';
+import { MdOutlineFoodBank } from 'react-icons/md';
+import { BiHomeHeart } from 'react-icons/bi';
+import { MdChair } from 'react-icons/md';
+import { IoShirtSharp } from 'react-icons/io5';
+import { TiWatch } from 'react-icons/ti';
+import { SlDiamond } from 'react-icons/sl';
+import { AiFillCar } from 'react-icons/ai';
+import { FaMotorcycle } from 'react-icons/fa';
+
 export const slide = [
   {
     image: '../images/slide/slide1.png'
@@ -62,102 +82,122 @@ export const categories = [
   {
     id: '2d08d800-0aa8-4aa3-8580-3ccd5f80cb7e',
     title: 'smartphones',
-    image: '../images/category/smartphones.jpg'
+    image: '../images/category/smartphones.jpg',
+    icon: GiSmartphone
   },
   {
     id: '9455e4f5-5c41-4a87-a112-0335b480e7d2',
     title: 'laptops',
-    image: '../images/category/laptops.jpg'
+    image: '../images/category/laptops.jpg',
+    icon: BsLaptop
   },
   {
     id: 'bac27e82-e844-442b-936b-c6b41ca982df',
     title: 'fragrances',
-    image: '../images/category/fragrances.jpg'
+    image: '../images/category/fragrances.jpg',
+    icon: GiFragrance
   },
   {
     id: '92ccd71a-5aaa-4f67-9cb5-f275b747d9d7',
     title: 'skincare',
-    image: '../images/category/skincare.jpg'
+    image: '../images/category/skincare.jpg',
+    icon: GiDrippingTube
   },
   {
     id: 'bf293555-68bc-4c0d-bcf1-7ca004409c06',
     title: 'groceries',
-    image: '../images/category/groceries.jpg'
+    image: '../images/category/groceries.jpg',
+    icon: MdOutlineFoodBank
   },
   {
     id: '36423421-be6c-4376-b150-d6ce369f7ef0',
     title: 'home-decoration',
-    image: '../images/category/home-decoration.jpg'
+    image: '../images/category/home-decoration.jpg',
+    icon: BiHomeHeart
   },
   {
     id: 'f0dc15bf-aee9-485e-add6-79a9f4d01dbb',
     title: 'furniture',
-    image: '../images/category/furniture.jpg'
+    image: '../images/category/furniture.jpg',
+    icon: MdChair
   },
   {
     id: 'f83cad29-96b2-4f18-afb4-5a561dd98cc1',
     title: 'tops',
-    image: '../images/category/tops.jpg'
+    image: '../images/category/tops.jpg',
+    icon: GiTankTop
   },
   {
     id: '0a3bbc09-ae65-4266-b4a8-c25e36e27bdd',
     title: 'womens-dresses',
-    image: '../images/category/womens-dresses.jpg'
+    image: '../images/category/womens-dresses.jpg',
+    icon: GiLargeDress
   },
   {
     id: '006e2b48-0eaa-4eb8-b4e8-e28248c246f',
     title: 'womens-shoes',
-    image: '../images/category/womens-shoes.jpg'
+    image: '../images/category/womens-shoes.jpg',
+    icon: GiBallerinaShoes
   },
   {
     id: '2aaab94c-2aed-4119-abcd-12cb8139a278',
     title: 'mens-shirts',
-    image: '../images/category/mens-shirts.jpg'
+    image: '../images/category/mens-shirts.jpg',
+    icon: IoShirtSharp
   },
   {
     id: '1c42bc0b-6775-4d7e-9cba-35aea13d1e1f',
     title: 'mens-shoes',
-    image: '../images/category/mens-shoes.jpg'
+    image: '../images/category/mens-shoes.jpg',
+    icon: GiSonicShoes
   },
   {
     id: '653ce32b-a8da-4699-8cc3-b2c99c10a334',
     title: 'mens-watches',
-    image: '../images/category/mens-watches.jpg'
+    image: '../images/category/mens-watches.jpg',
+    icon: GiWatch
   },
   {
     id: 'd31e8c11-850a-4236-a3a4-5f9624721d02',
     title: 'womens-watches',
-    image: '../images/category/womens-watches.jpg'
+    image: '../images/category/womens-watches.jpg',
+    icon: TiWatch
   },
   {
     id: '5e9a1b66-10fa-411d-bdad-710e44727856',
     title: 'womens-bags',
-    image: '../images/category/womens-bags.jpg'
+    image: '../images/category/womens-bags.jpg',
+    icon: BsHandbagFill
   },
   {
     id: 'f9245fcb-46ea-4777-94b2-a1ec44451f2a',
     title: 'womens-jewellery',
-    image: '../images/category/womens-jewellery.jpg'
+    image: '../images/category/womens-jewellery.jpg',
+    icon: SlDiamond
   },
   {
     id: '908f8a8b-102a-4979-b32f-0f3c727e5984',
     title: 'sunglasses',
-    image: '../images/category/sunglasses.jpg'
+    image: '../images/category/sunglasses.jpg',
+    icon: BsSunglasses
   },
   {
     id: '6d15c4fa-5185-40ec-9700-962f54066279',
     title: 'automotive',
-    image: '../images/category/automotive.jpg'
+    image: '../images/category/automotive.jpg',
+    icon: AiFillCar
   },
   {
     id: '632cea07-91de-401f-ae66-9033a1f243d6',
     title: 'motorcycle',
-    image: '../images/category/motorcycle.jpg'
+    image: '../images/category/motorcycle.jpg',
+    icon: FaMotorcycle
   },
   {
     id: '6462c41a-95b1-4df7-a0e3-ccd3bc216e1a',
     title: 'lighting',
-    image: '../images/category/lighting.jpg'
+    image: '../images/category/lighting.jpg',
+    icon: BsLightbulb
   }
 ];
 

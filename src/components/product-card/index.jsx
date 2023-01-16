@@ -2,7 +2,6 @@ import React from 'react';
 import { BsCart2 } from 'react-icons/bs';
 import { CgDollar } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
-import CounterBtns from '../counter-btns';
 import { BiShoppingBag } from 'react-icons/bi';
 import { AiOutlineHeart, AiOutlineEye } from 'react-icons/ai';
 
@@ -17,7 +16,7 @@ const ProductCard = ({ item }) => {
         <div>
           <div className='flex items-center justify-between px-4'>
             <Link
-              to='/'
+              to={`/details/${item.id}`}
               aria-label={`Go to ${item.title} product page`}
               className='outline-none hover:opacity-80 focus:opacity-80'>
               <h3 className='py-4 font-bold'>{item.title.toUpperCase()}</h3>
@@ -60,13 +59,14 @@ const ProductCard = ({ item }) => {
           <Link
             className='flex w-10 items-center justify-center gap-2 rounded-md border border-neutral-400 
             bg-neutral-200 text-neutral-400 outline-none duration-150 hover:bg-neutral-400 
-          hover:text-neutral-200 focus:bg-neutral-400 focus:text-neutral-200'>
+            hover:text-neutral-200 focus:bg-neutral-400 focus:text-neutral-200'>
             <AiOutlineHeart size={21} />
           </Link>
           <Link
+            to={`/details/${item.id}`}
             className='flex w-10 items-center justify-center gap-2 rounded-md border border-neutral-400 
             bg-neutral-200 text-neutral-400 outline-none duration-150 hover:bg-neutral-400 
-          hover:text-neutral-200 focus:bg-neutral-400 focus:text-neutral-200'>
+            hover:text-neutral-200 focus:bg-neutral-400 focus:text-neutral-200'>
             <AiOutlineEye size={21} />
           </Link>
         </div>

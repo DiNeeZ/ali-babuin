@@ -13,6 +13,7 @@ import 'swiper/css/autoplay';
 
 const Popular = () => {
   const popular = getMultipleRandom(products2, 8);
+
   return (
     <section className='mb-16 bg-neutral-200 pt-8 pb-16'>
       <div className='popular container'>

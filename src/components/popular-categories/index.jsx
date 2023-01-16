@@ -1,20 +1,51 @@
-import React from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from '../../assets/data';
 import { getMultipleRandom } from '../../utils';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const PopularCategories = () => {
-  const popularCategories = getMultipleRandom(categories, 8);
+  const popularCategories = useMemo(() => getMultipleRandom(categories, 8), [categories]);
+  const [ref, inView] = useInView();
+  const control = useAnimation();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 }
+  };
+
+  useEffect(() => {
+    if (inView) {
+      control.start('show');
+    }
+  }, [inView]);
 
   return (
     <section>
-      <div className='container mb-8'>
+      <div
+        ref={ref}
+        className='container mb-8'>
         <h2 className='mb-8 text-center text-2xl font-bold'>Popular Categories</h2>
-        <ul
+        <motion.ul
+          animate={control}
+          initial='hidden'
+          variants={container}
           className='grid grid-cols-1 gap-4 
           mobile:grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4'>
           {popularCategories.map((category) => (
-            <li
+            <motion.li
+              variants={item}
               key={category.id}
               className='group/category relative z-0 cursor-pointer overflow-hidden rounded-lg shadow-xl'>
               <Link
@@ -34,9 +65,9 @@ const PopularCategories = () => {
                   className='transition-transform duration-1000 group-hover/category:scale-110 group-focus/link:scale-110'
                 />
               </Link>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </section>
   );

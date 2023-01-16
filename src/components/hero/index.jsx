@@ -5,7 +5,7 @@ import HeroSlider from './hero-slider';
 
 const Hero = () => {
   return (
-    <section className='mb-8'>
+    <section className='tablet:mt-8 tablet:mb-16'>
       <div className='container'>
         <HeroSlider>
           {sliderData.map((slide) => {

@@ -60,7 +60,7 @@ const ProductCatalog = () => {
                 className='absolute inset-0 h-full w-full bg-neutral-800/95'
                 onClick={() => setShow(false)}
               />
-              <div className='mx-auto h-full w-full mobile:mt-8 mobile:h-[75vh] mobile:w-[90%] tablet:w-[80%]'>
+              <div className='h-full mobile:container mobile:mt-8'>
                 <motion.div
                   initial={{
                     x: '-100%',
@@ -78,12 +78,12 @@ const ProductCatalog = () => {
                     type: 'just',
                     duration: 0.3
                   }}
-                  className='relative h-full overflow-y-scroll rounded-md bg-white p-8 mobile:overflow-auto'>
+                  className='relative overflow-y-scroll rounded-md bg-white p-8 mobile:overflow-auto'>
                   <ul className='focus:bg-green-400 mobile:columns-2 '>
                     {categories.map((category) => (
                       <li
                         key={category.id}
-                        className='mb-2 font-medium uppercase'>
+                        className='font-medium uppercase'>
                         <Link
                           onClick={() => setShow(false)}
                           className='group/category-link relative inline-flex w-3/4 items-center rounded-lg px-6 py-2 duration-150 
@@ -91,7 +91,7 @@ const ProductCatalog = () => {
                           to={`/products/${category.title}`}>
                           {
                             <category.icon
-                              size={30}
+                              size={25}
                               className='mr-4 text-red-600'
                             />
                           }

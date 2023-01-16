@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className='py-8'>
       <div className='container'>
-        <div className='flex items-start justify-between'>
+        <div className='grid grid-cols-2 gap-4 mobile:grid-cols-4'>
           <Logo />
           <div>
             <h3 className='mb-4 text-lg font-semibold'>Support</h3>

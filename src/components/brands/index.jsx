@@ -9,7 +9,7 @@ const Brands = () => {
     <section className='mb-8'>
       <div className='brands'>
         <h2 className='mb-4 text-center text-2xl font-bold'>A brands you can find here</h2>
-        <div className=''>
+        <div>
           <Swiper
             allowTouchMove={false}
             spaceBetween={20}
@@ -47,7 +47,7 @@ const Brands = () => {
             ))}
           </Swiper>
         </div>
-        <div className=''>
+        <div>
           <Swiper
             allowTouchMove={false}
             spaceBetween={20}

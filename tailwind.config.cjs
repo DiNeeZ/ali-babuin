@@ -26,16 +26,6 @@ module.exports = {
       },
       transitionDuration: {
         '6s': '6000ms'
-      },
-      animation: {
-        loopscroll: {
-          '0%': {
-            transform: 'translate(0, 0)'
-          },
-          '100%': {
-            transform: 'translate(-100%, 0)'
-          }
-        }
       }
     }
   },

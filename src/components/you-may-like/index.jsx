@@ -56,7 +56,9 @@ const YouMayLike = ({ title = 'center' }) => {
               alt={item.title}
               className='mb-4 h-24 w-full rounded border object-cover object-center shadow'
             />
-            <Link className='text-cyan-600 duration-150 hover:text-cyan-300'>
+            <Link
+              to={`/details/${item.id}`}
+              className='text-cyan-600 duration-150 hover:text-cyan-300'>
               <h3>{item.title}</h3>
             </Link>
           </motion.li>

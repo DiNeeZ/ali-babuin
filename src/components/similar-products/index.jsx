@@ -10,8 +10,6 @@ const SimilarProducts = ({ category, id }) => {
   );
   const similar = getMultipleRandom(filtered, 3);
 
-  console.log(similar);
-
   return (
     <div className='container'>
       <h2 className='mb-8 text-2xl font-bold'>More like this</h2>
@@ -19,6 +17,7 @@ const SimilarProducts = ({ category, id }) => {
         {similar.map((item) => (
           <div key={item.id}>
             <Link
+              to={`/details/${item.id}`}
               className='group/similar-link flex w-64 flex-col items-center justify-center text-cyan-600 
 							duration-150 hover:text-cyan-300'>
               <img

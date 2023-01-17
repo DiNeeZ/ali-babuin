@@ -1,0 +1,7 @@
+.image-gallery .swiper-scrollbar {
+  background: transparent;
+}
+
+.image-gallery .swiper-scrollbar-drag {
+  background: #f87171;
+}

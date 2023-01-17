@@ -17,7 +17,9 @@ const Home = () => {
       <Brands />
       <Filler />
       <PopularCategories />
-      <YouMayLike />
+      <section>
+        <YouMayLike />
+      </section>
     </>
   );
 };

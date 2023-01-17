@@ -88,7 +88,7 @@ const ProductCatalog = () => {
                           onClick={() => setShow(false)}
                           className='group/category-link relative inline-flex w-3/4 items-center rounded-lg px-6 py-2 duration-150 
                           hover:bg-neutral-400/25 focus:bg-neutral-400/25 tablet:py-3'
-                          to={`/products/${category.title}`}>
+                          to={`/categories/${category.title}`}>
                           {
                             <category.icon
                               size={25}

@@ -15,7 +15,7 @@ const HeroSlide = ({ title, urlParam, imgUrl }) => {
 					select-none  mobile:w-36 tablet:w-52 desktop:w-72'
         />
         <Link
-          to={`/products/${urlParam}`}
+          to={`/categories/${urlParam}`}
           tabIndex={-1}
           className='flex items-center justify-center rounded bg-red-500
 					px-2 py-1 shadow-md shadow-neutral-600/50 duration-150 hover:bg-red-400 

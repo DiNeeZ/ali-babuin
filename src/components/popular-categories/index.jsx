@@ -50,7 +50,7 @@ const PopularCategories = () => {
               className='group/category relative z-0 cursor-pointer overflow-hidden rounded-lg shadow-xl'>
               <Link
                 className='group/link'
-                to={`/products/${category.title}`}>
+                to={`/categories/${category.title}`}>
                 <h3
                   className='absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap
                   rounded border border-white/30 bg-white/40 px-6 py-3 text-lg font-black

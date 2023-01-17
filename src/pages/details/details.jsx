@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
+import BreadCrumbs from '../../components/breadcrumbs';
 import ImageGalerry from '../../components/image-gallery';
 import YouMayLike from '../../components/you-may-like';
 import SimilarProducts from '../../components/similar-products';
@@ -34,15 +35,15 @@ const Details = () => {
           damping: 20
         }}>
         <div className='container'>
-          <div>
-            <h1 className='mb-4 flex flex-wrap gap-2 text-2xl font-bold'>
-              <span className='text-neutral-600'>
-                {pluralToSingular(product.category).replace('-', ' ')}
-              </span>
-              <span className='text-neutral-600'>{capitalizeFirstLetter(product.brand)}</span>
-              <span className='text-neutral-800'>{stringToUppercase(product.title)}</span>
-            </h1>
-          </div>
+          <BreadCrumbs product={product} />
+          <h1 className='mb-4 flex flex-wrap gap-2 text-2xl font-bold'>
+            <span className='text-neutral-600'>
+              {pluralToSingular(product.category).replace('-', ' ')}
+            </span>
+            <span className='text-neutral-600'>{capitalizeFirstLetter(product.brand)}</span>
+            <span className='text-neutral-800'>{stringToUppercase(product.title)}</span>
+          </h1>
+
           <div className='mb-16 flex flex-col gap-16 tablet:flex-row'>
             <div className='w-full tablet:w-2/3'>
               <div className='h-full'>

@@ -7,6 +7,8 @@ import Home from './pages/home/home';
 import Categories from './pages/categories/categories';
 import Details from './pages/details/details';
 import SearchResult from './pages/search-result/search-result';
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
 import ScrollTop from './components/scroll-top/scroll-top';
 
 const App = () => {
@@ -36,6 +38,14 @@ const App = () => {
             <Route
               path='/search/:query'
               element={<SearchResult />}
+            />
+            <Route
+              path='/login'
+              element={<Login />}
+            />
+            <Route
+              path='/register'
+              element={<Register />}
             />
           </Route>
         </Routes>

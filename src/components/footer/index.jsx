@@ -100,17 +100,15 @@ const Footer = () => {
           </div>
           <div>
             <h3 className='mb-4 text-lg font-semibold'>Socials</h3>
-            <ul className='flex flex-col gap-4'>
+            <ul className='flex items-center gap-2'>
               <li>
                 <a
                   href='https://en.wikipedia.org/wiki/The_Social_Network'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='go to Facebook'
                   className=' group/social flex items-center gap-2 text-blue-600 duration-150 hover:text-blue-900'>
                   <BsFacebook size={25} />
-                  <span className='leading-none text-neutral-700 duration-150 group-hover/social:text-cyan-700'>
-                    Facebook
-                  </span>
                 </a>
               </li>
               <li>
@@ -118,11 +116,9 @@ const Footer = () => {
                   href='https://en.wikipedia.org/wiki/The_Social_Network'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='go to Twitter'
                   className=' group/social flex items-center gap-2 text-blue-500 duration-150 hover:text-blue-800'>
                   <AiFillTwitterCircle size={30} />
-                  <span className='leading-none text-neutral-700 duration-150 group-hover/social:text-cyan-700'>
-                    Twitter
-                  </span>
                 </a>
               </li>
               <li>
@@ -130,11 +126,9 @@ const Footer = () => {
                   href='https://en.wikipedia.org/wiki/The_Social_Network'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='go to Instagram'
                   className=' group/social flex items-center gap-2 text-pink-600 duration-150 hover:text-pink-900'>
                   <AiFillInstagram size={30} />
-                  <span className='leading-none text-neutral-700 duration-150 group-hover/social:text-cyan-700'>
-                    Instagram
-                  </span>
                 </a>
               </li>
               <li>
@@ -142,11 +136,9 @@ const Footer = () => {
                   href='https://en.wikipedia.org/wiki/The_Social_Network'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='go to Linked In'
                   className=' group/social flex items-center gap-2 text-blue-400 duration-150 hover:text-blue-700'>
                   <AiFillLinkedin size={30} />
-                  <span className='leading-none text-neutral-700 duration-150 group-hover/social:text-cyan-700'>
-                    Linked In
-                  </span>
                 </a>
               </li>
             </ul>

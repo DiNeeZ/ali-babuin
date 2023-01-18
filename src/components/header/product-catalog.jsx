@@ -55,7 +55,7 @@ const ProductCatalog = () => {
               animate='visible'
               exit='hidden'
               variants={overlay}
-              className='absolute inset-0 z-50'>
+              className='absolute inset-0 z-50 overflow-y-scroll'>
               <div
                 className='absolute inset-0 h-full w-full bg-neutral-800/95'
                 onClick={() => setShow(false)}
@@ -78,8 +78,8 @@ const ProductCatalog = () => {
                     type: 'just',
                     duration: 0.3
                   }}
-                  className='relative overflow-y-scroll rounded-md bg-white p-8 mobile:overflow-auto'>
-                  <ul className='focus:bg-green-400 mobile:columns-2 '>
+                  className='relative  rounded-md bg-white p-8 mobile:overflow-auto'>
+                  <ul className=' focus:bg-green-400 mobile:columns-2 '>
                     {categories.map((category) => (
                       <li
                         key={category.id}

@@ -26,3 +26,33 @@ export const stringToUppercase = (str) => {
   });
   return upperArr.join(' ');
 };
+
+export const registerValidate = (values) => {
+  let errors = {};
+
+  if (!values.displayName) {
+    errors.displayName = 'Name is required';
+  }
+
+  if (!values.email) {
+    errors.email = 'Email address is required';
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = 'Email address is invalid';
+  }
+
+  if (!values.password) {
+    errors.password = 'Password field is required';
+  } else if (values.password.length < 6) {
+    errors.password = 'Password must be at least 6 characters';
+  }
+
+  if (values.password.length >= 6) {
+    if (!values.confirmPassword) {
+      errors.confirmPassword = 'Confirm Password field is required';
+    } else if (values.confirmPassword !== values.password) {
+      errors.confirmPassword = 'Passwords do not mutch';
+    }
+  }
+
+  return errors;
+};

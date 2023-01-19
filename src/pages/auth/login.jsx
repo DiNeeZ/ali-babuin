@@ -1,8 +1,71 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import FormContainer from '../../components/form/form-container';
+import FormInput from '../../components/form/form-input';
+import { signInAuthUserWithEmailAndPassword } from '../../utils/firebase';
+import { loginValidate } from '../../utils';
+
+const defaultFormFields = {
+  email: '',
+  password: ''
+};
 
 const Login = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
+  const { email, password } = formFields;
+
+  useEffect(() => {
+    const login = async () => {
+      if (Object.keys(errors).length === 0 && isSubmitting) {
+        try {
+          await signInAuthUserWithEmailAndPassword(email, password);
+          navigate('/');
+        } catch (error) {
+          switch (error.code) {
+            case 'auth/user-not-found':
+              setErrors({
+                ...errors,
+                email: 'No user associated with this email'
+              });
+              break;
+
+            case 'auth/wrong-password':
+              setErrors({
+                ...errors,
+                password: 'Incorrect password for email'
+              });
+              break;
+
+            default:
+              console.log('login error', error.message);
+              break;
+          }
+        }
+      }
+    };
+
+    login();
+  }, [errors, formFields]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormFields({
+      ...formFields,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(loginValidate(formFields));
+    setIsSubmitting(true);
+  };
+
   return (
     <motion.section
       initial={{ x: 300, opacity: 0 }}
@@ -12,44 +75,27 @@ const Login = () => {
         stiffness: 260,
         damping: 20
       }}>
-      <div className='container'>
-        <div className='mx-auto w-[80%] rounded-xl bg-neutral-100/50 p-4 shadow-md'>
-          <h1 className='pt-6 text-center text-3xl font-bold uppercase tracking-widest'>Login</h1>
-          <form
-            noValidate={true}
-            className='flex flex-col items-center gap-6 py-16'>
-            <div className='flex flex-col'>
-              <label className='mb-2 pl-2 text-neutral-400'>Enter e-mail address</label>
-              <input
-                type='email'
-                placeholder='Email'
-                className='w-96 rounded border py-3 px-4 shadow-sm outline-none duration-300 focus:shadow-md'
-              />
-            </div>
-            <div className='flex flex-col'>
-              <label className='mb-2 pl-2 text-neutral-400'>Enter password</label>
-              <input
-                type='password'
-                placeholder='Password'
-                className='w-96 rounded border py-3 px-4 shadow-sm outline-none duration-300 focus:shadow-md'
-              />
-            </div>
-            <button
-              className='rounded bg-cyan-600 px-12 py-2 text-lg font-semibold text-white outline-none 
-							duration-300 hover:bg-cyan-600/80 focus:translate-y-1 focus:bg-cyan-600/80'>
-              Login
-            </button>
-          </form>
-          <div className='font-semibold text-neutral-400'>
-            Don't have an account? {`${' '}`}
-            <Link
-              to='/register'
-              className='text-red-500 duration-300 hover:text-red-600'>
-              Sign Up
-            </Link>
-          </div>
-        </div>
-      </div>
+      <FormContainer
+        variant='sign-in'
+        handleSubmit={handleSubmit}>
+        <FormInput
+          errors={errors}
+          type='email'
+          placeholder='Email'
+          name='email'
+          value={email}
+          onChange={handleChange}
+        />
+
+        <FormInput
+          errors={errors}
+          type='password'
+          placeholder='Password'
+          name='password'
+          value={password}
+          onChange={handleChange}
+        />
+      </FormContainer>
     </motion.section>
   );
 };

@@ -12,7 +12,7 @@ import {
   updateProfile
 } from 'firebase/auth';
 
-import { getFirestore, doc, getDoc, setDoc, collection } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,7 +27,7 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-const auth = getAuth();
+export const auth = getAuth();
 
 const db = getFirestore();
 
@@ -55,8 +55,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     }
   }
 
-  console.log(userAuth);
-
   return userDocRef;
 };
 
@@ -64,12 +62,7 @@ export const getUserDocument = async (userAuth) => {
   const docRef = doc(db, 'users', userAuth.uid);
   const docSnap = await getDoc(docRef);
 
-  if (docSnap.exists()) {
-    return docSnap.data();
-  } else {
-    // doc.data() will be undefined in this case
-    console.log('No such document!');
-  }
+  if (docSnap.exists()) return docSnap.data();
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password, displayName) => {
@@ -85,16 +78,3 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
 export const signOutUser = async () => await signOut(auth);
-
-function transformFilms(filmsArr) {
-  const filteredEntries = Object.entries(filmsArr).filter(
-    (item) => item[0] !== 'firsta' && item[0] !== 'total'
-  );
-
-  return filmsArr.id.map((_, idx) =>
-    filteredEntries.reduce((acc, curr) => {
-      acc[curr[0]] = curr[1][idx];
-      return acc;
-    }, {})
-  );
-}

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import FormContainer from '../../components/form/form-container';
 import FormInput from '../../components/form/form-input';
+
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from '../../store/slices/userSlice';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth
@@ -20,6 +24,7 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -28,9 +33,16 @@ const Register = () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
         try {
           // Creating user by email and password
-          const { user } = await createAuthUserWithEmailAndPassword(email, password);
+          const user = await createAuthUserWithEmailAndPassword(email, password);
           await createUserDocumentFromAuth(user, { displayName });
-          // If registration has been succesfull, then redirect to home page
+          dispatch(
+            setCurrentUser({
+              createdAt: new Date(),
+              displayName,
+              email
+            })
+          );
+          // If registration has been successful, then redirect to home page
           navigate('/');
         } catch (error) {
           if (error.code === 'auth/email-already-in-use') {
@@ -70,80 +82,45 @@ const Register = () => {
         stiffness: 260,
         damping: 20
       }}>
-      <div className='container'>
-        <div className='mx-auto w-full rounded-xl p-4 mobile:w-[80%] mobile:bg-neutral-100/50 mobile:shadow-md'>
-          <h1 className='text-center text-3xl font-bold uppercase tracking-widest mobile:pt-6'>
-            Register
-          </h1>
-          <form
-            onSubmit={handleSubmit}
-            noValidate={true}
-            className='flex flex-col items-center gap-6 py-4 mobile:py-16'>
-            <FormInput
-              errors={errors}
-              type='text'
-              placeholder='Name'
-              name='displayName'
-              value={displayName}
-              onChange={handleChange}
-            />
+      <FormContainer
+        variant='sign-up'
+        handleSubmit={handleSubmit}>
+        <FormInput
+          errors={errors}
+          type='text'
+          placeholder='Name'
+          name='displayName'
+          value={displayName}
+          onChange={handleChange}
+        />
 
-            <FormInput
-              errors={errors}
-              type='email'
-              placeholder='email'
-              name='email'
-              value={email}
-              onChange={handleChange}
-            />
+        <FormInput
+          errors={errors}
+          type='email'
+          placeholder='email'
+          name='email'
+          value={email}
+          onChange={handleChange}
+        />
 
-            <div className='flex flex-col'>
-              {errors.password ? (
-                <label className='mb-2 pl-2 text-sm text-red-500'>{errors.password}</label>
-              ) : (
-                <label className='mb-2 pl-2 text-sm text-neutral-400'>Enter password</label>
-              )}
-              <input
-                type='password'
-                placeholder='Password'
-                name='password'
-                value={password}
-                onChange={handleChange}
-                className='rounded border py-3 px-4 shadow-sm outline-none duration-300 focus:shadow-md mobile:w-96'
-              />
-            </div>
-            <div className='flex flex-col'>
-              {errors.confirmPassword ? (
-                <label className='mb-2 pl-2 text-sm text-red-500'>{errors.confirmPassword}</label>
-              ) : (
-                <label className='mb-2 pl-2 text-sm text-neutral-400'>Confirm password</label>
-              )}
-              <input
-                type='password'
-                placeholder='Confirm Password'
-                name='confirmPassword'
-                value={confirmPassword}
-                onChange={handleChange}
-                className='rounded border py-3 px-4 shadow-sm outline-none duration-300 focus:shadow-md mobile:w-96'
-              />
-            </div>
-            <button
-              type='submit'
-              className='rounded bg-cyan-600 px-12 py-2 text-lg font-semibold text-white outline-none 
-              duration-300 hover:bg-cyan-600/80 focus:translate-y-1 focus:bg-cyan-600/80'>
-              Register
-            </button>
-          </form>
-          <div className='font-semibold text-neutral-400'>
-            Already have an account? {`${' '}`}
-            <Link
-              to='/login'
-              className='text-red-500 duration-300 hover:text-red-600'>
-              Sign In
-            </Link>
-          </div>
-        </div>
-      </div>
+        <FormInput
+          errors={errors}
+          type='password'
+          placeholder='Password'
+          name='password'
+          value={password}
+          onChange={handleChange}
+        />
+
+        <FormInput
+          errors={errors}
+          type='password'
+          placeholder='Confirm Password'
+          name='confirmPassword'
+          value={confirmPassword}
+          onChange={handleChange}
+        />
+      </FormContainer>
     </motion.section>
   );
 };

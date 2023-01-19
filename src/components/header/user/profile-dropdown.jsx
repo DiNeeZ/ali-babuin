@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { FiUser } from 'react-icons/fi';
 import { BsBagCheck } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { GrHelp } from 'react-icons/gr';
 import { BiLogOut } from 'react-icons/bi';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { signOutUser } from '../../../utils/firebase';
 
-const ProfileDropdown = ({ profileOpen, handleClose }) => {
+const ProfileDropdown = ({ profileOpen, handleClose, name, email }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const closeOnEscapeKey = (e) => {
       if (e.key === 'Escape') {
@@ -19,18 +21,25 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
     return () => document.body.removeEventListener('keydown', closeOnEscapeKey);
   }, [profileOpen]);
 
+  const logOut = async () => {
+    await signOutUser();
+    navigate('/');
+  };
+
   return (
     <div
       className='user-dropdown absolute top-14 right-0  min-w-[296px]
         rounded border border-slate-400/20 bg-white px-2 py-6 shadow-md shadow-slate-700/50'>
       <div className='mb-4 flex flex-col items-start px-4'>
-        <img
-          src='https://cdn-icons-png.flaticon.com/512/2202/2202112.png'
-          alt='user'
-          className='w-10'
-        />
-        <h2 className='text-lg font-semibold'>Eden Smith</h2>
-        <span className='text-sm text-neutral-700/70'>Los Angeles, CA</span>
+        <div className='mb-4 flex h-10 w-10 items-center'>
+          <div
+            className='flex h-full w-full items-center justify-center rounded-full bg-red-400 
+						text-2xl font-bold leading-none text-white'>
+            {name.charAt(0).toUpperCase()}
+          </div>
+        </div>
+        <h2 className='text-lg font-semibold'>{name}</h2>
+        <span className='text-sm text-neutral-700/70'>{email}</span>
       </div>
       <ul className='py-1'>
         <li>
@@ -82,80 +91,20 @@ const ProfileDropdown = ({ profileOpen, handleClose }) => {
           </Link>
         </li>
         <li>
-          <Link
-            to='/'
-            className='flex items-center gap-2 rounded px-4 py-2 outline-none duration-150 
-              hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
+          <div
+            onClick={logOut}
+            className='flex cursor-pointer items-center gap-2 rounded px-4 py-2 outline-none 
+              duration-150 hover:bg-neutral-400/30 focus:bg-neutral-400/30'>
             <BiLogOut
               size={20}
               className='text-neutral-900'
             />
             <span className='text-sm'>Log Out</span>
-          </Link>
+          </div>
         </li>
       </ul>
     </div>
   );
 };
 
-const Profile = () => {
-  const [profileOpen, setProfileOpen] = useState(false);
-
-  const handleSpacebarDown = (e) => {
-    if (e.key === ' ') {
-      e.preventDefault();
-      setProfileOpen(true);
-    }
-  };
-
-  return (
-    <>
-      {profileOpen && (
-        <div
-          className='overlay absolute inset-0'
-          onClick={() => setProfileOpen(false)}
-        />
-      )}
-      <div
-        tabIndex={0}
-        className='relative z-20 outline-none'
-        onKeyDown={handleSpacebarDown}>
-        <div
-          className='flex h-8 w-8 cursor-pointer items-center'
-          onClick={() => setProfileOpen(!profileOpen)}>
-          <img
-            src='https://cdn-icons-png.flaticon.com/512/2202/2202112.png'
-            alt='user'
-          />
-        </div>
-        {profileOpen && (
-          <ProfileDropdown
-            profileOpen={profileOpen}
-            handleClose={() => setProfileOpen(false)}
-          />
-        )}
-      </div>
-    </>
-  );
-};
-
-const User = () => {
-  const navigate = useNavigate();
-  const user = false;
-
-  return (
-    <>
-      {user ? (
-        <Profile />
-      ) : (
-        <div
-          className='cursor-pointer p-1.5'
-          onClick={() => navigate('/login')}>
-          <FiUser size={20} />
-        </div>
-      )}
-    </>
-  );
-};
-
-export default User;
+export default ProfileDropdown;

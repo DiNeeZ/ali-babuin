@@ -1,7 +1,8 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+
 import Layout from './components/layout';
 import Home from './pages/home/home';
 import Categories from './pages/categories/categories';
@@ -11,8 +12,27 @@ import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 import ScrollTop from './components/scroll-top/scroll-top';
 
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './store/slices/userSlice';
+import { onAuthStateChangedListener, getUserDocument } from './utils/firebase';
+
 const App = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener(async (user) => {
+      let currentUser = null;
+
+      if (user) {
+        currentUser = await getUserDocument(user);
+      }
+
+      dispatch(setCurrentUser(currentUser));
+    });
+
+    return unsubscribe;
+  }, []);
 
   return (
     <ScrollTop>

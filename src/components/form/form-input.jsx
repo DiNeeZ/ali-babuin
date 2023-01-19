@@ -11,7 +11,7 @@ const FormInput = (props) => {
   return (
     <div className='flex flex-col'>
       {props.errors[props.name] ? (
-        <label className='mb-2 pl-2 text-sm text-red-500'>{errors[props.name]}</label>
+        <label className='mb-2 pl-2 text-sm text-red-500'>{props.errors[props.name]}</label>
       ) : (
         <label className='mb-2 pl-2 text-sm text-neutral-400'>{label[props.name]}</label>
       )}

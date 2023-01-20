@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import FormContainer from '../../components/form/form-container';
 import FormInput from '../../components/form/form-input';
 
-import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../../store/slices/userSlice';
 import {
   createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth
+  createUserDocumentFromAuth,
+  signOutUser
 } from '../../utils/firebase';
 import { registerValidate } from '../../utils';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/userSlice';
 
 const defaultFormFields = {
   displayName: '',
@@ -24,26 +25,27 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const currentUser = useSelector(selectUser);
+
+  console.log('Redux auth: ' + JSON.stringify(currentUser));
 
   const { displayName, email, password, confirmPassword } = formFields;
 
   useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+      return;
+    }
+
     const register = async () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
         try {
           // Creating user by email and password
           const user = await createAuthUserWithEmailAndPassword(email, password);
           await createUserDocumentFromAuth(user, { displayName });
-          dispatch(
-            setCurrentUser({
-              createdAt: new Date(),
-              displayName,
-              email
-            })
-          );
+          await signOutUser();
           // If registration has been successful, then redirect to home page
-          navigate('/');
+          navigate('/login');
         } catch (error) {
           if (error.code === 'auth/email-already-in-use') {
             setErrors({
@@ -57,7 +59,7 @@ const Register = () => {
     };
 
     register();
-  }, [errors, isSubmitting, email, password, formFields, displayName]);
+  }, [errors, isSubmitting, email, password, formFields, displayName, currentUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

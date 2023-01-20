@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import FormContainer from '../../components/form/form-container';
 import FormInput from '../../components/form/form-input';
+
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../store/slices/userSlice';
 import { signInAuthUserWithEmailAndPassword } from '../../utils/firebase';
 import { loginValidate } from '../../utils';
 
@@ -16,10 +19,16 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const currentUser = useSelector(selectUser);
 
   const { email, password } = formFields;
 
   useEffect(() => {
+    if (currentUser) {
+      navigate('/');
+      return;
+    }
+
     const login = async () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
         try {
@@ -50,7 +59,7 @@ const Login = () => {
     };
 
     login();
-  }, [errors, formFields]);
+  }, [errors, formFields, currentUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -7,12 +7,12 @@ import { selectUser } from '../../../store/slices/userSlice';
 
 const User = () => {
   const navigate = useNavigate();
-  const { currentUser } = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   return (
     <>
-      {currentUser ? (
-        <Profile user={currentUser} />
+      {user ? (
+        <Profile user={user} />
       ) : (
         <div
           className='cursor-pointer p-1.5'

@@ -29,7 +29,9 @@ const Profile = ({ user }) => {
           <div
             className='flex h-full w-full items-center justify-center 
             rounded-full bg-red-400 font-bold text-white'>
-            {user.displayName.charAt(0).toUpperCase()}
+            <span className='pt-[2px] leading-none'>
+              {user.displayName.charAt(0).toUpperCase()}
+            </span>
           </div>
         </div>
         {profileOpen && (

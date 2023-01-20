@@ -34,8 +34,8 @@ const ProfileDropdown = ({ profileOpen, handleClose, name, email }) => {
         <div className='mb-4 flex h-10 w-10 items-center'>
           <div
             className='flex h-full w-full items-center justify-center rounded-full bg-red-400 
-						text-2xl font-bold leading-none text-white'>
-            {name.charAt(0).toUpperCase()}
+						text-2xl font-bold  text-white'>
+            <span className='pt-1 leading-none'>{name.charAt(0).toUpperCase()}</span>
           </div>
         </div>
         <h2 className='text-lg font-semibold'>{name}</h2>

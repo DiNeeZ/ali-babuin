@@ -22,10 +22,13 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
-      let currentUser = null;
+      console.log('Firebase auth: ' + JSON.stringify(user));
+      let currentUser;
 
       if (user) {
         currentUser = await getUserDocument(user);
+      } else {
+        currentUser = null;
       }
 
       dispatch(setCurrentUser(currentUser));

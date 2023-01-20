@@ -12,7 +12,7 @@ import {
   updateProfile
 } from 'firebase/auth';
 
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -63,6 +63,18 @@ export const getUserDocument = async (userAuth) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) return docSnap.data();
+};
+
+export const updateFavorites = async (favoriteItem) => {
+  const userDoc = await getUserDocument(auth.currentUser);
+  const favorites = userDoc.favorites ? userDoc.favorites : [];
+  const docRef = doc(db, 'users', auth.currentUser.uid);
+
+  const data = {
+    favorites: favorites.includes(favoriteItem) ? [...favorites] : [...favorites, favoriteItem]
+  };
+
+  await updateDoc(docRef, data);
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password, displayName) => {

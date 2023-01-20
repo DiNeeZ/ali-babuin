@@ -27,8 +27,6 @@ const Register = () => {
   const navigate = useNavigate();
   const currentUser = useSelector(selectUser);
 
-  console.log('Redux auth: ' + JSON.stringify(currentUser));
-
   const { displayName, email, password, confirmPassword } = formFields;
 
   useEffect(() => {

@@ -22,9 +22,8 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
-      console.log('Firebase auth: ' + JSON.stringify(user));
       let currentUser;
-
+      console.log(user);
       if (user) {
         currentUser = await getUserDocument(user);
       } else {

@@ -3,7 +3,8 @@ import { BsCart2 } from 'react-icons/bs';
 import { CgDollar } from 'react-icons/cg';
 import { Link } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
-import { AiOutlineHeart, AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEye } from 'react-icons/ai';
+import Favorive from './favorive';
 
 const ProductCard = ({ item }) => {
   return (
@@ -56,12 +57,7 @@ const ProductCard = ({ item }) => {
             <BsCart2 size={20} />
             <span>Add To Card</span>
           </button>
-          <Link
-            className='flex w-10 items-center justify-center gap-2 rounded-md border border-neutral-400 
-            bg-neutral-200 text-neutral-400 outline-none duration-150 hover:bg-neutral-400 
-            hover:text-neutral-200 focus:bg-neutral-400 focus:text-neutral-200'>
-            <AiOutlineHeart size={21} />
-          </Link>
+          <Favorive id={item.id} />
           <Link
             to={`/details/${item.id}`}
             className='flex w-10 items-center justify-center gap-2 rounded-md border border-neutral-400 

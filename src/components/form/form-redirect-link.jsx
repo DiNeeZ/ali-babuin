@@ -16,11 +16,11 @@ const variants = {
 
 const FormRedirectLink = ({ variant }) => {
   return (
-    <div className='font-semibold text-neutral-400'>
+    <div className='text-sm font-semibold text-neutral-400'>
       {variants[variant].text} {`${' '}`}
       <Link
         to={variants[variant].link}
-        className='text-red-500 duration-300 hover:text-red-600'>
+        className='text-sm text-red-500 duration-300 hover:text-red-600'>
         {variants[variant].btn}
       </Link>
     </div>

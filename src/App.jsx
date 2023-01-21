@@ -14,6 +14,7 @@ import ScrollTop from './components/scroll-top/scroll-top';
 
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './store/slices/userSlice';
+import { setFavorites } from './store/slices/favoriteSlice';
 import { onAuthStateChangedListener, getUserDocument } from './utils/firebase';
 
 const App = () => {
@@ -22,15 +23,19 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
-      let currentUser;
-      console.log(user);
       if (user) {
-        currentUser = await getUserDocument(user);
+        const { displayName, email, createdAt, favorites } = await getUserDocument(user);
+        const currentUser = {
+          displayName,
+          email,
+          createdAt
+        };
+        dispatch(setCurrentUser(currentUser));
+        dispatch(setFavorites(favorites));
       } else {
-        currentUser = null;
+        dispatch(setCurrentUser(null));
+        dispatch(setFavorites([]));
       }
-
-      dispatch(setCurrentUser(currentUser));
     });
 
     return unsubscribe;

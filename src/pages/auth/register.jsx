@@ -97,7 +97,7 @@ const Register = () => {
         <FormInput
           errors={errors}
           type='email'
-          placeholder='email'
+          placeholder='Email'
           name='email'
           value={email}
           onChange={handleChange}

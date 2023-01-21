@@ -6,23 +6,22 @@ import { selectUser } from '../../store/slices/userSlice';
 import { products2 } from '../../assets/data';
 import AuthRedirectPopup from '../auth-redirect-popup';
 import { useDispatch } from 'react-redux';
-import { setFavorites } from '../../store/slices/favoriteSlice';
+import { addFavorite } from '../../store/slices/favoriteSlice';
 import { updateFavorites } from '../../utils/firebase';
-import { async } from '@firebase/util';
 
-const Favorive = ({ id }) => {
+const Favorite = ({ id }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const currentUser = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    const addFavorite = async () => {
+    const addOneItem = async () => {
       await updateFavorites(id);
     };
 
     if (currentUser) {
-      dispatch(setFavorites(id));
-      addFavorite();
+      dispatch(addFavorite(id));
+      addOneItem();
     } else {
       setIsPopupOpen(true);
     }
@@ -49,4 +48,4 @@ const Favorive = ({ id }) => {
   );
 };
 
-export default Favorive;
+export default Favorite;
